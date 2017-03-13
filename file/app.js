@@ -11,6 +11,7 @@ mqttClient.on('connect', function () {
 });
  
 mqttClient.on('message', function (topic, message) {
+	console.log(topic);
 	var action =util.getLevelNTopic(topic, constants.ACTION_IDX);
 	s3handler.execute(action, JSON.parse(message.toString()));
 });
